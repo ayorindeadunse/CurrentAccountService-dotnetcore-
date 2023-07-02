@@ -15,11 +15,13 @@
     <None Remove="Entities\" />
     <None Remove="Services\" />
     <None Remove="Services\Abstract\" />
+    <None Remove="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Abstract\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 </Project>

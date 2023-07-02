@@ -11,6 +11,19 @@ namespace CurrentAccountService.Entities
 		public string Email { get; set; }
 		public string MobileNumber { get; set; }
 		public DateTime DateCreated { get; set; }
+
+		// include Constructor
+		public Customer(string customerID, string firstName, string? middleName, string lastName, string email, string mobileNumber)
+		{
+			Id = Guid.NewGuid();
+			CustomerID = customerID;
+			FirstName = firstName;
+			MiddleName = middleName;
+			LastName = lastName;
+			Email = email;
+			MobileNumber = mobileNumber;
+			DateCreated = DateTime.UtcNow;
+		}
 	}
 }
 
