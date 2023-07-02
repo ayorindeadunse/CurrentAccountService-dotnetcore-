@@ -24,6 +24,13 @@ namespace CurrentAccountService.Entities
 		{
 
 		}
-	}
+
+        public void AddTransaction(string description, decimal amount,TransactionType transactionType)
+        {
+            var transaction = new Transaction(description, amount,transactionType);
+            Transactions.Add(transaction);
+            Balance += amount;
+        }
+    }
 }
 

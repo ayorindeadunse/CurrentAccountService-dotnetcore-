@@ -17,6 +17,7 @@
     <None Remove="Services\Abstract\" />
     <None Remove="Repositories\" />
     <None Remove="Util\" />
+    <None Remove="Services\Core\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -25,5 +26,6 @@
     <Folder Include="Services\Abstract\" />
     <Folder Include="Repositories\" />
     <Folder Include="Util\" />
+    <Folder Include="Services\Core\" />
   </ItemGroup>
 </Project>

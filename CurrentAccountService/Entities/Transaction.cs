@@ -11,7 +11,7 @@ namespace CurrentAccountService.Entities
 
 
 		// refactor to include constructor
-		public Transaction(string? description, decimal amount,TransactionType transactionType)
+		public Transaction(string? description, decimal amount, TransactionType transactionType)
 		{
 			Id = Guid.NewGuid();
 			Narration = description;

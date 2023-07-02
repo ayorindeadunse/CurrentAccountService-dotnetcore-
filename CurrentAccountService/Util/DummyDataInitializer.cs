@@ -79,10 +79,21 @@ namespace CurrentAccountService.Util
             account2.Transactions.Add(transaction2);
             account2.Balance = transaction2.Amount;
 
+            // update balances
+            account2.Transactions.Add(transaction3);
+            account2.Balance = transaction3.Amount;
+
+            account2.Transactions.Add(transaction4);
+            account2.Balance = transaction4.Amount;
+
             customerRepository.AddCustomer(customer2);
             accountRepository.AddAccount(account2);
             accountRepository.AddTransaction(account2.AccountID, transaction2,TransactionType.Credit);
+            accountRepository.AddTransaction(account2.AccountID, transaction3, TransactionType.Debit);
             accountRepository.AddTransaction(account2.AccountID, transaction4, TransactionType.Debit);
+
+            
+           
         }
 
         
