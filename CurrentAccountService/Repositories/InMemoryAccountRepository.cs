@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Transactions;
 using CurrentAccountService.Entities;
+using Transaction = CurrentAccountService.Entities.Transaction;
 
 namespace CurrentAccountService.Repositories 
 {
@@ -23,12 +25,11 @@ namespace CurrentAccountService.Repositories
             if (account != null)
             {
                 account?.Transactions?.Add(transaction);
-                //account.Balance += transaction.Amount;
 
                 // check if it is a debit or credit transaction and update Balance accordingly.
                 if (transactionType == TransactionType.Debit)
                 {
-                    account.Balance = account.Balance - transaction.Amount;
+                    account.Balance -= transaction.Amount;
                 }
                 else if (transactionType == TransactionType.Credit)
                 {

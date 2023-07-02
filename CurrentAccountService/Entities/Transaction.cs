@@ -19,6 +19,12 @@ namespace CurrentAccountService.Entities
 			TransactionType = transactionType;
 			TransactionDate = DateTime.UtcNow;
 		}
+
+		// Add parameterless constructor
+		public Transaction()
+		{
+
+		}
 	}
 }
 

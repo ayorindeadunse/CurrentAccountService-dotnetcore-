@@ -1,4 +1,5 @@
 ﻿using CurrentAccountService.Repositories;
+using CurrentAccountService.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,5 +29,14 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Call the Initialize method after building the app
+Initialize(app.Services.GetRequiredService<ICustomerRepository>(), app.Services.GetRequiredService<IAccountRepository>());
+
 app.Run();
 
+
+// Initialize method in DummyDataInitializer class
+static void Initialize(ICustomerRepository customerRepository, IAccountRepository accountRepository)
+{
+    DummyDataInitializer.Initialize(customerRepository, accountRepository);
+}
