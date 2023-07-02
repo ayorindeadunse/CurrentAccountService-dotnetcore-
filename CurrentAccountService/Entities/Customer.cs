@@ -24,6 +24,13 @@ namespace CurrentAccountService.Entities
 			MobileNumber = mobileNumber;
 			DateCreated = DateTime.UtcNow;
 		}
+
+		// create parameter less constructor to remove ambiguity
+
+		public Customer()
+		{
+
+		}
 	}
 }
 
