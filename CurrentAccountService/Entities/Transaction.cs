@@ -8,6 +8,17 @@ namespace CurrentAccountService.Entities
 		public DateTime TransactionDate { get; set; }
 		public string? Narration { get; set; }
 		public TransactionType TransactionType { get; set; }
+
+
+		// refactor to include constructor
+		public Transaction(string? description, decimal amount,TransactionType transactionType)
+		{
+			Id = Guid.NewGuid();
+			Narration = description;
+			Amount = amount;
+			TransactionType = transactionType;
+			TransactionDate = DateTime.UtcNow;
+		}
 	}
 }
 
