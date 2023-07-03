@@ -9,7 +9,7 @@ namespace CurrentAccountService.Entities
 		public string CustomerID { get; set; }
 		public DateTime DateCreated { get; set; }
 		public DateTime? DateModified { get; set; }
-		public List<Transaction>? Transactions { get; set; }
+		public List<Transaction> Transactions { get; set; }
 
 		// refactored to include a constructor with a default balance and other properties
 		public Account(string customerID)
