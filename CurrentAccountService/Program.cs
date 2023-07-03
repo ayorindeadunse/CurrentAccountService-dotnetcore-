@@ -1,4 +1,6 @@
 ﻿using CurrentAccountService.Repositories;
+using CurrentAccountService.Services.Abstract;
+using CurrentAccountService.Services.Core;
 using CurrentAccountService.Util;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddSwaggerGen();
 // Add custom services created in the API
 builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>();
 builder.Services.AddSingleton<IAccountRepository, InMemoryAccountRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
