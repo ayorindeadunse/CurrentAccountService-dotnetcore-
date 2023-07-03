@@ -11,17 +11,23 @@ namespace CurrentAccountService.Util
 		{
             var customer1 = new Customer
             {
+                Id = Guid.NewGuid(),
                 CustomerID = "123456",
                 FirstName = "John",
-                LastName = "Doe",
-                Email = "john.doe@example.com",
-                MobileNumber = "123-456-7890"
+                MiddleName = "Quincy",
+                LastName = "Adams",
+                Email = "john.adams@rotund.com",
+                MobileNumber = "123-456-7890",
+                DateCreated = DateTime.UtcNow
             };
 
             var account1 = new Account
             {
+                Id = Guid.NewGuid(),
                 AccountID = "accountID1",
-                CustomerID = customer1.CustomerID
+                CustomerID = customer1.CustomerID,
+                DateCreated = DateTime.UtcNow,
+                Transactions = new List<Transaction>(),
             };
 
             var transaction1 = new Transaction
@@ -33,7 +39,7 @@ namespace CurrentAccountService.Util
                 TransactionDate = DateTime.UtcNow
             };
 
-            //account1.Transactions.Add(transaction1);
+            account1.Transactions.Add(transaction1);
 
             customerRepository.AddCustomer(customer1);
             accountRepository.AddAccount(account1);
@@ -48,13 +54,17 @@ namespace CurrentAccountService.Util
                 MiddleName = "Olawale",
                 LastName = "Adunse",
                 Email = "ayorinde.adunse@rova.com",
-                MobileNumber = "09039875170"
+                MobileNumber = "09039875170",
+                DateCreated = DateTime.UtcNow
             };
 
             var account2 = new Account
             {
+                Id = Guid.NewGuid(),
                 AccountID = "accountID2",
-                CustomerID = customer2.CustomerID
+                CustomerID = customer2.CustomerID,
+                DateCreated = DateTime.UtcNow,
+                Transactions = new List<Transaction>(),
             };
 
             var transaction2 = new Transaction
@@ -63,7 +73,7 @@ namespace CurrentAccountService.Util
                 Narration = "Bitcoin purchase",
                 Amount = 500,
                 TransactionType = TransactionType.Credit,
-                TransactionDate = DateTime.UtcNow
+                TransactionDate = DateTime.UtcNow,
             };
 
             var transaction3 = new Transaction
@@ -84,12 +94,12 @@ namespace CurrentAccountService.Util
                 TransactionDate = DateTime.UtcNow
             };
 
-            account2.Balance = transaction2.Amount;
+            account2.Transactions.Add(transaction2);
 
             // update balances
-            account2.Balance = transaction3.Amount;
+            account2.Transactions.Add(transaction3);
 
-            account2.Balance = transaction4.Amount;
+            account2.Transactions.Add(transaction4);
 
             customerRepository.AddCustomer(customer2);
             accountRepository.AddAccount(account2);
