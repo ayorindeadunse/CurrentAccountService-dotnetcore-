@@ -28,7 +28,7 @@ namespace CurrentAccountService.Controllers
 			return Ok(account);
 		}
 
-		[HttpGet("{customerId")]
+		[HttpGet("{customerId}")]
 		public IActionResult GetAccountInformation(string customerId)
 		{
 			var account = _accountService.GetAccountInformation(customerId);
