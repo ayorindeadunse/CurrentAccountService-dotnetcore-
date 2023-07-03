@@ -31,7 +31,7 @@ namespace CurrentAccountService.Util
                 TransactionType = TransactionType.Credit
             };
 
-            account1.Transactions.Add(transaction1);
+            //account1.Transactions.Add(transaction1);
 
             customerRepository.AddCustomer(customer1);
             accountRepository.AddAccount(account1);
@@ -76,14 +76,14 @@ namespace CurrentAccountService.Util
                 TransactionType = TransactionType.Debit
             };
 
-            account2.Transactions.Add(transaction2);
+            //account2.Transactions.Add(transaction2);
             account2.Balance = transaction2.Amount;
 
             // update balances
-            account2.Transactions.Add(transaction3);
+           // account2.Transactions.Add(transaction3);
             account2.Balance = transaction3.Amount;
 
-            account2.Transactions.Add(transaction4);
+           // account2.Transactions.Add(transaction4);
             account2.Balance = transaction4.Amount;
 
             customerRepository.AddCustomer(customer2);
