@@ -7,29 +7,65 @@ namespace CurrentAccountService.Services.Core
 {
     public class AccountService : IAccountService
     {
-        private readonly Dictionary<string, Account> _accounts = new Dictionary<string, Account>();
+  
         private readonly IAccountRepository _accountRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public AccountService(IAccountRepository accountRepository)
+        public AccountService(IAccountRepository accountRepository,ICustomerRepository customerRepository)
         {
             _accountRepository = accountRepository;
+            _customerRepository = customerRepository;
         }
 
-        public Account GetAccountInformation(string customerID)
+        public IEnumerable<Account> GetAccountInformation(string customerID)
         {
-            return _accountRepository.GetAccountsByCustomerID(customerID)?.FirstOrDefault();
+            var customer = _customerRepository.GetCustomerByID(customerID);
+            if (customer == null)
+            {
+                throw new Exception("Customer not found.");
+            }
+
+            var accounts = _accountRepository.GetAccountsByCustomerID(customerID);
+
+            if (accounts != null)
+            {
+                return accounts;
+            }
+            throw new Exception("Account not found for the customer.");
         }
 
         public Account OpenAccount(string customerID, decimal initialCredit)
         {
-            var account = new Account(customerID);
+            var customer = _customerRepository.GetCustomerByID(customerID);
+            if (customer == null)
+            {
+                throw new Exception("Customer not found.");
+            }
+
+             string accountID = GenerateAccountID();
+            
+            var account = new Account
+            {
+                Id = Guid.NewGuid(),
+                AccountID = accountID,
+                CustomerID = customerID,
+                DateCreated = DateTime.UtcNow,
+                Transactions = new List<Transaction>()
+            };
+            _accountRepository.AddAccount(account);
 
             if (initialCredit != 0)
-                account.AddTransaction($"Initial credit: {initialCredit}",initialCredit,TransactionType.Credit);
-
-            _accounts.Add(customerID, account);
+            {
+                account?.AddTransaction("Initial deposit", initialCredit, TransactionType.Credit);
+            }
             return account;
         }
+
+        private string GenerateAccountID()
+        {
+            return Guid.NewGuid().ToString();
+        }
+       
     }
 }
 

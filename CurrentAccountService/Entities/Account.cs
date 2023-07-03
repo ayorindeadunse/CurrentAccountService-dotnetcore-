@@ -22,7 +22,7 @@ namespace CurrentAccountService.Entities
 		// Add parameterless constructor
 		public Account()
 		{
-
+			Balance = 0;
 		}
 
         public void AddTransaction(string description, decimal amount,TransactionType transactionType)

@@ -8,7 +8,7 @@ namespace CurrentAccountService.Repositories
 		IEnumerable<Account> GetAccountsByCustomerID(string customerID);
 		Account GetAccountByID(string accountID);
 		void AddAccount(Account account);
-		void AddTransaction(string accountID, Transaction transaction, TransactionType transactionType); // check this
+		void AddTransaction(string accountID, Transaction transaction, TransactionType transactionType);
 
 	}
 }

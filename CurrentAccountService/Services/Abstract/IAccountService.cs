@@ -6,7 +6,7 @@ namespace CurrentAccountService.Services.Abstract
 	public interface IAccountService
 	{
 		Account OpenAccount(string customerID, decimal initialCredit);
-		Account GetAccountInformation(string customerID);
+		IEnumerable<Account> GetAccountInformation(string customerID);
 	}
 }
 
