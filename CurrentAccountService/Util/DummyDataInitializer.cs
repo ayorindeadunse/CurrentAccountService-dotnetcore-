@@ -26,9 +26,11 @@ namespace CurrentAccountService.Util
 
             var transaction1 = new Transaction
             {
+                Id = Guid.NewGuid(),
                 Narration = "Initial deposit",
                 Amount = 1000,
-                TransactionType = TransactionType.Credit
+                TransactionType = TransactionType.Credit,
+                TransactionDate = DateTime.UtcNow
             };
 
             //account1.Transactions.Add(transaction1);
@@ -57,46 +59,44 @@ namespace CurrentAccountService.Util
 
             var transaction2 = new Transaction
             {
+                Id = Guid.NewGuid(),
                 Narration = "Bitcoin purchase",
                 Amount = 500,
-                TransactionType = TransactionType.Credit
+                TransactionType = TransactionType.Credit,
+                TransactionDate = DateTime.UtcNow
             };
 
             var transaction3 = new Transaction
             {
+                Id = Guid.NewGuid(),
                 Narration = "Salary",
                 Amount = 100000,
-                TransactionType = TransactionType.Credit
+                TransactionType = TransactionType.Credit,
+                TransactionDate = DateTime.UtcNow
             };
 
             var transaction4 = new Transaction
             {
+                Id = Guid.NewGuid(),
                 Narration = "Babysitter",
                 Amount = 1000,
-                TransactionType = TransactionType.Debit
+                TransactionType = TransactionType.Debit,
+                TransactionDate = DateTime.UtcNow
             };
 
-            //account2.Transactions.Add(transaction2);
             account2.Balance = transaction2.Amount;
 
             // update balances
-           // account2.Transactions.Add(transaction3);
             account2.Balance = transaction3.Amount;
 
-           // account2.Transactions.Add(transaction4);
             account2.Balance = transaction4.Amount;
 
             customerRepository.AddCustomer(customer2);
             accountRepository.AddAccount(account2);
             accountRepository.AddTransaction(account2.AccountID, transaction2,TransactionType.Credit);
             accountRepository.AddTransaction(account2.AccountID, transaction3, TransactionType.Debit);
-            accountRepository.AddTransaction(account2.AccountID, transaction4, TransactionType.Debit);
-
-            
-           
-        }
-
-        
+            accountRepository.AddTransaction(account2.AccountID, transaction4, TransactionType.Debit);           
+        }        
 	}
 }
 
